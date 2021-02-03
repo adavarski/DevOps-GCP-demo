@@ -1,4 +1,5 @@
-Terraform GCP VM: example NGINX server
+### Terraform GCP VM: example NGINX server
+
 This folder contains a simple Terraform module that deploys resources in GCP for a web server
 
 Running this module manually
