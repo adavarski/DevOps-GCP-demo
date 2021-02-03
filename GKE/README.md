@@ -1,4 +1,4 @@
-#### Terraform GKE + simple demo 
+### Terraform GKE + simple demo 
 
 This repository contains a Terraform project that builds a Google Kubernetes Engine cluster with a custom node pool.
 
