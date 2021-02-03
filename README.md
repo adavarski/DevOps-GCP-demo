@@ -18,15 +18,15 @@ Check:
 ```
 $ ./google-cloud-sdk/bin/gcloud config list
 [core]
-account = YOUR_GMIAL_ACCOUNT@gmail.com
+account = YOUR_GOOGLE_ACCOUNT@gmail.com
 disable_usage_reporting = True
 project = PROJECT_ID
 
 Your active configuration is: [default]
 ```
 
-Simpe demo
+Simpe demo:
 
-1.Terraform GCP VM: EXAMPLE NGINX SERVER
-2.Terraform GKE + manifests
+1.Terraform GCP VM (example NGINX server) -> VM
+2.Terraform GKE + manifests -> GKE
 
