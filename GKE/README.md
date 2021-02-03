@@ -18,7 +18,10 @@ terraform apply.
 gcloud components install kubectl
 gcloud config set project PROJECT_ID set the current project,
 gcloud container clusters list (to list clusters),
-gcloud container clusters get-credentials gke-demo to setup kubeconfig,
-#Now you can access your cluster using the Kubernetes CLI: kubectl cluster-info.
+gcloud container clusters get-credentials gke-demo (to setup kubeconfig)
+
 ```
+Now you can access your cluster using the Kubernetes CLI: kubectl cluster-info.
+
+
 - Clean: `terraform destroy`
