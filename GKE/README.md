@@ -251,6 +251,28 @@ $ kubectl rollout pause deployment nginx
 $ kubectl rollout resume deployment nginx
 $ kubectl rollout undo deployment nginx --to-revision=3
 
+#SSH to Worker Node
+
+$ gcloud compute ssh gke-gke-demo-primary-pool-7d9203ca-v865 --zone europe-west2-a
+Warning: Permanently added 'compute.6329642282550514897' (ED25519) to the list of known hosts.
+
+Welcome to Kubernetes v1.17.14-gke.1600!
+
+You can find documentation for Kubernetes at:
+  http://docs.kubernetes.io/
+
+The source for this release can be found at:
+  /home/kubernetes/kubernetes-src.tar.gz
+Or you can download it at:
+  https://storage.googleapis.com/kubernetes-release-gke/release/v1.17.14-gke.1600/kubernetes-src.tar.gz
+
+It is based on the Kubernetes source at:
+  https://github.com/kubernetes/kubernetes/tree/v1.17.14-gke.1600
+
+For Kubernetes copyright and licensing information, see:
+  /home/kubernetes/LICENSES
+
+
 ```
 
 - Clean GKE cluster: `terraform destroy`
