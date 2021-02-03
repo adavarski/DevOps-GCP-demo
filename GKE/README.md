@@ -22,53 +22,11 @@ $ terraform apply
 
 ...
 google_container_cluster.gke-cluster: Creating...
-google_container_cluster.gke-cluster: Still creating... [10s elapsed]
-google_container_cluster.gke-cluster: Still creating... [20s elapsed]
-google_container_cluster.gke-cluster: Still creating... [30s elapsed]
-google_container_cluster.gke-cluster: Still creating... [40s elapsed]
-google_container_cluster.gke-cluster: Still creating... [50s elapsed]
-google_container_cluster.gke-cluster: Still creating... [1m0s elapsed]
-google_container_cluster.gke-cluster: Still creating... [1m10s elapsed]
-google_container_cluster.gke-cluster: Still creating... [1m20s elapsed]
-google_container_cluster.gke-cluster: Still creating... [1m30s elapsed]
-google_container_cluster.gke-cluster: Still creating... [1m40s elapsed]
-google_container_cluster.gke-cluster: Still creating... [1m50s elapsed]
-google_container_cluster.gke-cluster: Still creating... [2m0s elapsed]
-google_container_cluster.gke-cluster: Still creating... [2m10s elapsed]
-google_container_cluster.gke-cluster: Still creating... [2m20s elapsed]
-google_container_cluster.gke-cluster: Still creating... [2m30s elapsed]
+...
 google_container_cluster.gke-cluster: Still creating... [2m40s elapsed]
 google_container_cluster.gke-cluster: Creation complete after 2m50s [id=projects/windy-art-303706/locations/europe-west2-a/clusters/gke-demo]
 google_container_node_pool.primary_pool: Creating...
-google_container_node_pool.primary_pool: Still creating... [10s elapsed]
-google_container_node_pool.primary_pool: Still creating... [20s elapsed]
-google_container_node_pool.primary_pool: Still creating... [30s elapsed]
-google_container_node_pool.primary_pool: Still creating... [40s elapsed]
-google_container_node_pool.primary_pool: Still creating... [50s elapsed]
-google_container_node_pool.primary_pool: Still creating... [1m0s elapsed]
-google_container_node_pool.primary_pool: Still creating... [1m10s elapsed]
-google_container_node_pool.primary_pool: Still creating... [1m20s elapsed]
-google_container_node_pool.primary_pool: Still creating... [1m30s elapsed]
-google_container_node_pool.primary_pool: Still creating... [1m40s elapsed]
-google_container_node_pool.primary_pool: Still creating... [1m50s elapsed]
-google_container_node_pool.primary_pool: Still creating... [2m0s elapsed]
-google_container_node_pool.primary_pool: Still creating... [2m10s elapsed]
-google_container_node_pool.primary_pool: Still creating... [2m20s elapsed]
-google_container_node_pool.primary_pool: Still creating... [2m30s elapsed]
-google_container_node_pool.primary_pool: Still creating... [2m40s elapsed]
-google_container_node_pool.primary_pool: Still creating... [2m50s elapsed]
-google_container_node_pool.primary_pool: Still creating... [3m0s elapsed]
-google_container_node_pool.primary_pool: Still creating... [3m10s elapsed]
-google_container_node_pool.primary_pool: Still creating... [3m20s elapsed]
-google_container_node_pool.primary_pool: Still creating... [3m30s elapsed]
-google_container_node_pool.primary_pool: Still creating... [3m40s elapsed]
-google_container_node_pool.primary_pool: Still creating... [3m50s elapsed]
-google_container_node_pool.primary_pool: Still creating... [4m0s elapsed]
-google_container_node_pool.primary_pool: Still creating... [4m10s elapsed]
-google_container_node_pool.primary_pool: Still creating... [4m20s elapsed]
-google_container_node_pool.primary_pool: Still creating... [4m30s elapsed]
-google_container_node_pool.primary_pool: Still creating... [4m40s elapsed]
-google_container_node_pool.primary_pool: Still creating... [4m50s elapsed]
+...
 google_container_node_pool.primary_pool: Still creating... [5m0s elapsed]
 google_container_node_pool.primary_pool: Creation complete after 5m2s [id=projects/windy-art-303706/locations/europe-west2-a/clusters/gke-demo/nodePools/primary-pool]
 
@@ -81,10 +39,9 @@ $ ./google-cloud-sdk/bin/gcloud container clusters list
 NAME      LOCATION        MASTER_VERSION    MASTER_IP     MACHINE_TYPE   NODE_VERSION      NUM_NODES  STATUS
 gke-demo  europe-west2-a  1.17.14-gke.1600  34.89.78.209  n1-standard-1  1.17.14-gke.1600  1          RUNNING
 ```
-Install kubectl with Google SDK
-
+- Install kubectl using Google Cloud SDK
+```
 $ ./google-cloud-sdk/bin/gcloud components install kubectl
-
 
 Your current Cloud SDK version is: 326.0.0
 Installing components from version: 326.0.0
@@ -116,27 +73,13 @@ Do you want to continue (Y/n)?  Y
 Performing post processing steps...done.                                                                                                                                                        
 
 Update done!
+```
+- Install kubectl (not using Google SDK)
 
-Note: GKE k8s version is 1.17.14, so we have to install the same kubectl version. To install without Google SDK
+Note: GKE k8s version is 1.17.14, so we have to install the same kubectl version. To install without Google Cloud SDK
 
 ```
 $ wget https://dl.k8s.io/v1.17.14/kubernetes-client-linux-amd64.tar.gz
---2021-02-03 16:02:15--  https://dl.k8s.io/v1.17.14/kubernetes-client-linux-amd64.tar.gz
-Resolving dl.k8s.io (dl.k8s.io)... 34.107.204.206, 2600:1901:0:26f3::
-Connecting to dl.k8s.io (dl.k8s.io)|34.107.204.206|:443... connected.
-HTTP request sent, awaiting response... 302 Moved Temporarily
-Location: https://storage.googleapis.com/kubernetes-release/release/v1.17.14/kubernetes-client-linux-amd64.tar.gz [following]
---2021-02-03 16:02:16--  https://storage.googleapis.com/kubernetes-release/release/v1.17.14/kubernetes-client-linux-amd64.tar.gz
-Resolving storage.googleapis.com (storage.googleapis.com)... 172.217.169.144, 216.58.212.16, 216.58.212.48, ...
-Connecting to storage.googleapis.com (storage.googleapis.com)|172.217.169.144|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 13113590 (13M) [application/x-tar]
-Saving to: ‘kubernetes-client-linux-amd64.tar.gz’
-
-kubernetes-client-linux-amd64.tar.gz             100%[=======================================================================================================>]  12,51M  3,20MB/s    in 4,2s    
-
-2021-02-03 16:02:21 (2,98 MB/s) - ‘kubernetes-client-linux-amd64.tar.gz’ saved [13113590/13113590]
-
 $ tar -zxvf kubernetes-client-linux-amd64.tar.gz 
 kubernetes/
 kubernetes/client/
@@ -150,6 +93,9 @@ Server Version: version.Info{Major:"1", Minor:"17+", GitVersion:"v1.17.14-gke.16
 $ sudo mv ./kubernetes/client/bin/kubectl /usr/local/bin/
 
 ```
+- Setup kubeconfig
+```
+$ gcloud config set project PROJECT_ID (Optional: set the current project)
 
 $ export KUBECONFIG=~/.kube/k8s-GKE
 
@@ -160,13 +106,6 @@ kubeconfig entry generated for gke-demo.
 $ cat ~/.kube/k8s-GKE
 ```
 
-```
-gcloud components install kubectl
-gcloud config set project PROJECT_ID set the current project,
-gcloud container clusters list (to list clusters),
-gcloud container clusters get-credentials gke-demo (to setup kubeconfig)
-
-```
 Now you can access your cluster using the Kubernetes CLI: kubectl cluster-info.
 
 ```
@@ -230,10 +169,12 @@ Apply some manifests:
 $ cd k8s-manifests
 
 #Storage and persistent disks
+
 $ kubectl apply -f ssd.yaml
 $ kubectl apply -f storage-change.yaml
 
 #Load balancing
+
 $ kubectl run nginx --image=nginx --port=80
 deployment.apps/nginx created
 
@@ -291,6 +232,7 @@ kubectl describe hpa [NAME-OF-HPA]
 kubectl delete hpa [NAME-OF-HPA]
 
 # Container registry 
+
 $ docker pull nginx
 Using default tag: latest
 latest: Pulling from library/nginx
