@@ -12,6 +12,9 @@ Prequisites: locally installed terraform
 - Enable Compute Engine API (APIs & Services) 
 - Add SSH key: ssh-keygen and add ssh pub key (Compute Engine/Metadata/SSH Keys -> add davar:generated google_compute_engine.pub key). Note: All instances in this project inherit these SSH keys 
 - Run vim main.tf to set the project ID.
+- Terraforming: terraform init/plan/apply and check nginx
+
+Example Output:
 ```
 terraform init.
 terraform fmt/plan.
