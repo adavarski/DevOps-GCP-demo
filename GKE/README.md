@@ -227,22 +227,15 @@ ID]]
 
 # Scaling pods with the horizontal pod autoscaler (HPA)
 
-kubectl autoscale deployment my-app --max=6 --min=4 --cpu-percent=50
-kubectl describe hpa [NAME-OF-HPA]
-kubectl delete hpa [NAME-OF-HPA]
+$ kubectl autoscale deployment my-app --max=6 --min=4 --cpu-percent=50
+$ kubectl describe hpa [NAME-OF-HPA]
+$ kubectl delete hpa [NAME-OF-HPA]
 
 # Container registry 
 
 $ docker pull nginx
 Using default tag: latest
-latest: Pulling from library/nginx
-a076a628af6f: Pull complete 
-0732ab25fa22: Pull complete 
-d7f36f6fe38f: Pull complete 
-f72584a26f32: Pull complete 
-7125e4df9063: Pull complete 
-Digest: sha256:10b8cc432d56da8b61b070f4c7d2543a9ed17c2b23010b43af434fd40e2ca4aa
-Status: Downloaded newer image for nginx:latest
+...
 docker.io/library/nginx:latest
 $ docker tag nginx us.gcr.io/windy-art-303706/nginx
 $ gcloud docker -- push us.gcr.io/windy-art-303706/nginx
@@ -260,4 +253,4 @@ $ kubectl rollout undo deployment nginx --to-revision=3
 
 ```
 
-- Clean: `terraform destroy`
+- Clean GKE cluster: `terraform destroy`
