@@ -8,8 +8,8 @@ Prequisites: locally installed terraform
 
 - Sign up/in for GCP.
 - Create a new Google Cloud Project (Demo)
-- Create service account for terraform (Name: demo-terraform; Role: Owner or Role for Compute Engine), service account key (ADD KEY: Select JSON as the key type) and downloaded JSON credentials
-- Copy credentials.json file to the project directory for this demo.
+- Create service account for terraform (Name: demo-terraform; Role: Owner or Role for Compute Engine), service account key (ADD KEY: Select JSON as the key type) and downloaded JSON credentials 
+- Copy JSON credentials file as credentials.json file to the project directory for this demo.
 - Enable Compute Engine API (APIs & Services) 
 - Add SSH key: ssh-keygen and add ssh pub key (Compute Engine/Metadata/SSH Keys -> add davar:generated google_compute_engine.pub key). Note: All instances in this project inherit these SSH keys 
 - Run vim main.tf to set the project ID.
