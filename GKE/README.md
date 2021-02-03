@@ -251,7 +251,7 @@ $ kubectl rollout pause deployment nginx
 $ kubectl rollout resume deployment nginx
 $ kubectl rollout undo deployment nginx --to-revision=3
 
-#SSH to Worker Node
+#SSH to Worker Node (user davar)
 
 $ gcloud compute ssh gke-gke-demo-primary-pool-7d9203ca-v865 --zone europe-west2-a
 Warning: Permanently added 'compute.6329642282550514897' (ED25519) to the list of known hosts.
@@ -272,7 +272,8 @@ It is based on the Kubernetes source at:
 For Kubernetes copyright and licensing information, see:
   /home/kubernetes/LICENSES
 
-
+davar@gke-gke-demo-primary-pool-7d9203ca-v865 ~ $ ps -ef
+davar@gke-gke-demo-primary-pool-7d9203ca-v865 ~ $ docker ps -a
 ```
 
 - Clean GKE cluster: `terraform destroy`
