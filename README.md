@@ -41,5 +41,5 @@ Your active configuration is: [default]
 
 1.Terraform GCP VM (example NGINX server) -> VM 
 
-2.Terraform GKE + manifests -> GKE
+2.Terraform GKE + k8s-manifests -> GKE
 
