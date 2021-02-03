@@ -7,7 +7,7 @@
 - Enable Kubernetes Engine API & Compute Engine API (APIs & Services) 
 - Add SSH keys: ssh-keygen and add ssh pub key (Compute Engine/Metadata/SSH Keys -> add davar:generated pub key). Note: All instances in this project inherit these SSH keys 
 
-- Run vim main.tf to set the project ID, etc.
+- Run vim main.tf to set the project ID (etc.)
 - Terraforming: terraform init/plan/apply
 ```
 terraform init.
