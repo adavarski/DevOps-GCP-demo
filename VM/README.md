@@ -1,18 +1,18 @@
-Terraform "GCP VM: EXAMPLE NGINX SERVER"
+Terraform GCP VM: example NGINX server
 This folder contains a simple Terraform module that deploys resources in GCP for a web server
 
 Running this module manually
+
 Prequisites: locally installed terraform
 
-Sign up/in for GCP.
-Create a new Google Cloud Project (Demo)
-Create service account (Name: demo-terraform; Role: Owner), servcie account key (ADD KEY: Select JSON as the key type and click Create) and downloaded JSON credentials
-Copy credentials.json file to the project directory for this demo.
-Enable Compute Engine API (APIs & Services) 
-All instances in this project inherit these SSH keys ---> ssh-keygen and add ssh pub key (Compute Engine/Metadata/SSH Keys -> add davar:generated pub key)
-Run vim main.tf to set the project ID.
+- Sign up/in for GCP.
+- Create a new Google Cloud Project (Demo)
+- Create service account for terraform (Name: demo-terraform; Role: Owner or Role for Compute Engine), service account key (ADD KEY: Select JSON as the key type) and downloaded JSON credentials
+- Copy credentials.json file to the project directory for this demo.
+- Enable Compute Engine API (APIs & Services) 
+- Add SSH key: ssh-keygen and add ssh pub key (Compute Engine/Metadata/SSH Keys -> add davar:generated google_compute_engine.pub key). Note: All instances in this project inherit these SSH keys 
+- Run vim main.tf to set the project ID.
 ```
-cd VM
 terraform init.
 terraform fmt/plan.
 terraform apply.
@@ -23,10 +23,11 @@ Outputs:
 
 ip = "104.197.88.27"
 
-
+#Check nginx
 http://104.197.88.27/ ---> Welcome to nginx!
 
-$ ssh -i ~/.ssh/google_compute_engine ubuntu@35.223.180.23
+#Login to VM
+$ ssh -i ~/.ssh/google_compute_engine ubuntu@35.223.180.23 (or ssh -i ~/.ssh/google_compute_engine davar@35.223.180.23)
 The authenticity of host '35.223.180.23 (35.223.180.23)' can't be established.
 ECDSA key fingerprint is SHA256:4bkLYjdxXUcnR6VAY5riK8vgW/MmAX7hC30ERgIjgHI.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -50,5 +51,5 @@ To see these additional updates run: apt list --upgradable
 
 ```
 
-When you're done, run terraform destroy to clean resources.
+- When you're done, run `terraform destroy` to clean resources.
 
