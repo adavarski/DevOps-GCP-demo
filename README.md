@@ -39,8 +39,8 @@ Your active configuration is: [default]
 
 ### Simpe demos:
 
-1.Terraform GCP VM (example NGINX server) -> VM 
+1.[Terraform GCP VM (example NGINX server)](https://github.com/adavarski/DevOps-GCP-demo/tree/main/VM/)
 
-2.Terraform GKE + k8s-manifests -> GKE
+2.[Terraform GKE + k8s-manifests](https://github.com/adavarski/DevOps-GCP-demo/tree/main/GKE/) 
 
 3.TBD
