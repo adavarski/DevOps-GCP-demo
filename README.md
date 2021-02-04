@@ -37,9 +37,10 @@ Your active configuration is: [default]
 
 #### Install kubectl
 
-### Simpe demo:
+### Simpe demos:
 
 1.Terraform GCP VM (example NGINX server) -> VM 
 
 2.Terraform GKE + k8s-manifests -> GKE
 
+3.TBD
