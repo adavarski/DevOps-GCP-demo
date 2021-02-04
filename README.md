@@ -1,8 +1,8 @@
 
 ### Requirements:
 
-- Terraform
 - gcloud-sdk
+- terraform
 - kubernetes-cli
 
 
