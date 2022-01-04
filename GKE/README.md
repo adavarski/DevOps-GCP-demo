@@ -231,7 +231,72 @@ $ kubectl autoscale deployment my-app --max=6 --min=4 --cpu-percent=50
 $ kubectl describe hpa [NAME-OF-HPA]
 $ kubectl delete hpa [NAME-OF-HPA]
 
-# Container registry 
+# Container registry
+
+Google recommends creating a tag following this naming convention: [HOSTNAME]/[PROJECT-ID]/[IMAGE]
+
+Using this naming convention, we can easily identify our image, based on the projectID and the location. The hostname is essentially where we store the image. There are four hostnames:
+• gcr.io: This hostname stores the image in the United States, but this
+location can be changed in the future.
+• us.gcr.io: This always stores the images in the United States but
+uses a different bucket instead of gcr.io.
+• eu.gcr.io: This stores the images in Europe.
+• asia.gcr.io: This stores the images in Asia.
+
+It is important to choose the nearest location when we store images. This is because we don’t want to have too much latency when we push or pull the image. We can tag the local image in the registry with the following command:
+docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]
+The command tags an image with the latest version. If we want to create a specific version, we can use this syntax:
+docker tag [SOURCE_IMAGE] [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[VERSION]
+
+We can now create the command for tagging our first image. The SOURCE_IMAGE is the image we just built with the Docker command. In our case, the command is
+
+Example1 (app microservice and k8s deploy) : 
+
+docker tag app eu.gcr.io/windy-art-303706/app:1.0
+
+With the image tagged, we can now push the image on the registry. The syntax for pushing the image follows the same rules for creating the tag. The syntax looks like the following:
+docker push [HOSTNAME]/[PROJECT-ID]/[IMAGE]:[VERSION]
+If we omit VERSION, the image is pushed using the latest tag.
+
+It is possible to verify all the images we pushed in the registry with the following command:
+gcloud container images list-tags [HOSTNAME]/[PROJECTID]/[IMAGE]
+
+Create k8s cluster and deploy app microservice example: 
+gcloud config set compute/zone us-east1-b
+gcloud container clusters create microservice-gcp --num-nodes 3 --scopes https://www.googleapis.com/auth/projecthosting,storage-rw
+gcloud container clusters get-credentials --zone us-east1-b microservice-gcp
+
+kubectl create ns microservice-gcp
+
+cat service.yaml
+kind: Deployment
+apiVersion: extensions/v1beta1
+metadata:
+  name: practical-microservice
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: backend
+      labels:
+        app: gcp-microservice
+        role: backend
+        env: production
+    spec:
+      containers:
+      - name: pracitcalgcp-microservice
+        image: eu.gcr.io/windy-art-303706/app:1.0
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "100m"
+        imagePullPolicy: Always
+        command: ["sh", "main"]
+        
+Next, we must create the new deployment in the namespace we previously created, using the following command:
+kubectl --namespace=microservice-gcp apply service.yaml        
+
+Example2 (using nginx from DockerHub) :
 
 $ docker pull nginx
 Using default tag: latest
